@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="d-flex justify-content-between p-3">
+            <div class="image">
+                <img src="https://imgs.search.brave.com/jxFGfGlReoLmkUuaHQ8AtfGO1pwfg4HEj51p8oUkm2k/rs:fit:713:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4z/UEw1Z21EMllGX1RH/SEppcE9oZllRSGFF/NyZwaWQ9QXBp"
+                    alt="logo" width="90">
+            </div>
+            <div class="quiz-header">
+                <h4 style="font-family: cursive;"> Angular and TypeScript Quiz!</h4>
+                <span style="font-family:italic;"> Welcome {{name}}</span>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around py-3">
+            <div class="score">
+                <h5>{{points}} points</h5>
+            </div>
+            <div class="question-remaining">
+                <span style="font-style: italic;">Question {{currentQuestion+1}} of 10</span>
+            </div>
+            <div class="timer">
+                <h5> {{counter}} sec &#9201; </h5>
+            </div>
+        </div>
+        <div class="progress mb-3">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+                aria-label="Success striped example" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="question">
+            <div class="card">
+                <h3>{{questionList[currentQuestion].question}}</h3>
+            </div>
+        </div>
+        <div class="options">
+            <ol>
+                <li (click)="answer(currentQuestion,questionList[currentQuestion].optiona)">
+                    <div class="card">
+                        {{questionList[currentQuestion].optiona}}</div>
+                </li>
+                <li (click)="answer(currentQuestion,questionList[currentQuestion].optionb)">
+                    <div class="card">
+                        {{questionList[currentQuestion].optionb}}</div>
+                </li>
+                <li (click)="answer(currentQuestion,questionList[currentQuestion].optionc)">
+                    <div class="card">
+                        {{questionList[currentQuestion].optionc}}</div>
+                </li>
+                <li (click)="answer(currentQuestion,questionList[currentQuestion].optiond)">
+                    <div class="card">
+                        {{questionList[currentQuestion].optiond}}</div>
+                </li>
+            </ol>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button class="btn" [disabled]="currentQuestion===0" (click)="previousQuestion()"><i
+                    class="fa text-primary fa-3x fa-solid fa-chevron-left"></i></button>
+            <button class="btn" (click)="resetQuiz()"><i class="fa text-primary fa-3x fa-solid fa-refresh"></i></button>
+            <button class="btn" [disabled]="currentQuestion===questionList.length-1" (click)="nextQuestion()"><i
+                    class="fa text-primary fa-3x fa-solid fa-chevron-right"></i></button>
+        </div>
+    </div>
+</div>

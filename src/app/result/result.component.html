@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="d-flex justify-content-between p-3">
+            <div class="image">
+                <img src="https://imgs.search.brave.com/jxFGfGlReoLmkUuaHQ8AtfGO1pwfg4HEj51p8oUkm2k/rs:fit:713:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4z/UEw1Z21EMllGX1RH/SEppcE9oZllRSGFF/NyZwaWQ9QXBp"
+                    alt="logo" width="90">
+            </div>
+            <div class="quiz-header">
+                <h4 style="font-family: cursive;"> Angular and TypeScript Quiz!</h4>
+                <span style="font-family:italic;"> Welcome</span>
+            </div>
+        </div>
+
+        <div class="text-center">
+            Number of Correct Answers {{ans.getCorrectAnswers()}}
+            Number of Wrong Answers {{ans.getTotalNoOfQuestions() - ans.getCorrectAnswers()}}
+        </div>
