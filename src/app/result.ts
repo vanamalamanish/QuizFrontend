@@ -1,22 +1,9 @@
 export class Result {
   
-    constructor(private correctAnswers:number,private totalNoOfQuestions:number){
-    }
-
-
-    public setCorrectAnswers(correctAnswer:number):void{
-        this.correctAnswers = correctAnswer;
-    }
-
-    public getCorrectAnswers():number{
-        return this.correctAnswers;
-    }
-
-    public setTotalNoOfQuestions(totalNoOfQuestions:number):void{
+    correctAnswers!:number;
+    totalNoOfQuestions!:number;
+    constructor(correctAnswers:number,totalNoOfQuestions:number){
+        this.correctAnswers = correctAnswers;
         this.totalNoOfQuestions = totalNoOfQuestions;
-    }
-
-    public getTotalNoOfQuestions():number{
-        return this.totalNoOfQuestions;
     }
 }

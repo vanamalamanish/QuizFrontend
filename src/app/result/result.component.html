@@ -7,11 +7,14 @@
             </div>
             <div class="quiz-header">
                 <h4 style="font-family: cursive;"> Angular and TypeScript Quiz!</h4>
-                <span style="font-family:italic;"> Welcome</span>
+                <span style="font-family:italic;"> Welcome {{name}}</span>
             </div>
         </div>
 
         <div class="text-center">
-            Number of Correct Answers {{ans.getCorrectAnswers()}}
-            Number of Wrong Answers {{ans.getTotalNoOfQuestions() - ans.getCorrectAnswers()}}
+            Number of Correct Answers {{ans['correctAnswers']}}<br>
+            Number of Wrong Answers {{noOfWrongAnswers}}<br>
+            Grade : {{grade}}<br>
+            percentage : {{percentage}}
+
         </div>

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { interval } from 'rxjs';
 import { Question } from '../question';
 import { QuestionService } from '../service/question.service';
-import { Result } from '../result';
+import { ResultService } from '../service/result.service';
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
@@ -18,9 +18,9 @@ export class QuestionComponent implements OnInit {
   counter: number = 60;
   correctAnswer: number = 0;
   interval$: any;
-  result!:Result;
   progress: String = '0';
-  constructor(private questionService: QuestionService,private route:Router) { }
+  options: String[][] = [];
+  constructor(private questionService: QuestionService, private route: Router,private resultService:ResultService) { }
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name')!;
@@ -33,6 +33,14 @@ export class QuestionComponent implements OnInit {
     this.questionService.getQuestions(category).subscribe(res => {
       console.log(res);
       this.questionList = res;
+      for (let i = 0; i < this.questionList.length; i++) {
+
+        this.options[i] = [this.questionList[i].optiona,
+        this.questionList[i].optionb,
+        this.questionList[i].optionc,
+        this.questionList[i].optiond];
+      }
+      console.log(this.options);
     })
   }
 
@@ -61,14 +69,13 @@ export class QuestionComponent implements OnInit {
     }, 1000);
   }
 
-  moveToNextQuestion(){
-    if(this.questionList.length===this.currentQuestion+1){
-    this.result.setCorrectAnswers(this.correctAnswer);
-    this.result.setTotalNoOfQuestions(this.questionList.length);
-    this.route.navigate(['result']);
+  moveToNextQuestion() {
+    if (this.questionList.length === this.currentQuestion + 1) {
+      this.resultService.setResult(this.correctAnswer,this.questionList.length);
+      this.route.navigate(['result']);
     }
-    else 
-    this.currentQuestion++;
+    else
+      this.currentQuestion++;
   }
 
   checkoption(option: string, answer: string) {

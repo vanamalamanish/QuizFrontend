@@ -32,22 +32,10 @@
             </div>
         </div>
         <div class="options">
-            <ol>
-                <li (click)="answer(currentQuestion,questionList[currentQuestion].optiona)">
-                    <div class="card">
-                        {{questionList[currentQuestion].optiona}}</div>
-                </li>
-                <li (click)="answer(currentQuestion,questionList[currentQuestion].optionb)">
-                    <div class="card">
-                        {{questionList[currentQuestion].optionb}}</div>
-                </li>
-                <li (click)="answer(currentQuestion,questionList[currentQuestion].optionc)">
-                    <div class="card">
-                        {{questionList[currentQuestion].optionc}}</div>
-                </li>
-                <li (click)="answer(currentQuestion,questionList[currentQuestion].optiond)">
-                    <div class="card">
-                        {{questionList[currentQuestion].optiond}}</div>
+            <ol *ngFor="let option of options[currentQuestion] | keyvalue">
+                <li (click)="answer(currentQuestion,option.value)">
+                    <div class="card" appChangebg [isCorrect]="option.value===questionList[currentQuestion].answer">
+                        {{option.value}}</div>
                 </li>
             </ol>
         </div>

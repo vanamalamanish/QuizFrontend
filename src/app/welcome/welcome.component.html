@@ -8,5 +8,11 @@
     <button class="btn btn-primary btn-lg" routerLink="/question" (click)="startQuiz()">
         Start the Quiz
     </button>
+    
+    <select>
+        <option *ngFor="let category of categories" #select="ngModel" ngModel [value]="category.category">
+            {{category.value}}</option>
+    </select>
+
 
 </div>
