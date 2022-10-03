@@ -12,15 +12,18 @@ export class WelcomeComponent implements OnInit {
     {category:'c',value:"C"},
     {category:'java',value:"Java"},
     {category:"python",value:"Python"}];
+  category!:string;
   @ViewChild('name') name!:ElementRef;
-  @ViewChild('select') selectedCategory!:ElementRef;
   constructor() { }
 
   ngOnInit(): void {
   }
   startQuiz(){
     localStorage.setItem('name',this.name.nativeElement.value);
-    console.log(this.selectedCategory.nativeElement.value);
+  }
+
+  onSelect(category:any){
+    localStorage.setItem('category',category.target.value); 
   }
 
 }

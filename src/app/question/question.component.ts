@@ -10,7 +10,7 @@ import { ResultService } from '../service/result.service';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-
+  category:string=localStorage.getItem('category')!;
   name: string = '';
   questionList: Question[] = [];
   currentQuestion: number = 0;
@@ -25,7 +25,7 @@ export class QuestionComponent implements OnInit {
   ngOnInit(): void {
     this.name = localStorage.getItem('name')!;
 
-    this.getQuestions("prg");
+    this.getQuestions(this.category);
     console.log(this.questionList);
     this.startCounter();
   }
@@ -107,7 +107,7 @@ export class QuestionComponent implements OnInit {
   resetQuiz() {
 
     this.resetCounter();
-    this.getQuestions("prg");
+    this.getQuestions(this.category);
     this.points = 0;
     this.counter = 60;
     this.currentQuestion = 0;
