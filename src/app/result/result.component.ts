@@ -17,12 +17,12 @@ export class ResultComponent implements OnInit {
   constructor(private resultService:ResultService) { }
 
   ngOnInit(): void {
-    this.resultService.getGrade(this.ans.correctAnswers,this.ans.totalNoOfQuestions).subscribe((data)=>{
-      this.grade = data;
-    });
     this.ans = this.resultService.getResult();
     this.noOfWrongAnswers = this.ans.totalNoOfQuestions-this.ans.correctAnswers;
     this.percentage = (this.ans.correctAnswers/this.ans.totalNoOfQuestions)*100;
+    this.resultService.getGrade(this.ans.correctAnswers,this.ans.totalNoOfQuestions).subscribe((data)=>{
+      this.grade = data;
+    });
   }
 
 }

@@ -11,6 +11,7 @@ import { ChangebgDirective } from './changebg.directive';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ResultComponent } from './result/result.component';
+import { CircularprogressComponent } from './circularprogress/circularprogress.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ResultComponent } from './result/result.component';
     HeaderComponent,
     ChangebgDirective,
     LoginComponent,
-    ResultComponent
+    ResultComponent,
+    CircularprogressComponent
   ],
   imports: [
     BrowserModule,
